@@ -50,8 +50,8 @@ export function LivingRoomFirstScroll() {
   }, [])
 
   const raw = scrollRaw
-  let nightMix = 0
-  let scale = 1
+  let nightMix: number
+  let scale: number
   if (raw <= SPLIT) {
     const t = SPLIT > 0 ? raw / SPLIT : 0
     nightMix = smoothstep(0.05, 0.95, t)
