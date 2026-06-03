@@ -211,12 +211,10 @@ export function WindowWordsSection() {
         ref={stickyRef}
         className="sticky top-0 z-10 flex h-dvh w-full flex-col items-center justify-center overflow-hidden bg-white transition-colors duration-300"
       >
-        <MartiFlyIn />
-
         {/* Resim — 1. bölümde gizli (yalnızca harf dolgusu), 2. bölümde tam ekran */}
         <div
           ref={bgFrameRef}
-          className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500"
+          className="pointer-events-none absolute inset-0 z-[10] flex items-center justify-center opacity-0 transition-opacity duration-500"
           aria-hidden
         >
           <img
@@ -228,6 +226,8 @@ export function WindowWordsSection() {
             onLoad={() => ScrollTrigger.refresh()}
           />
         </div>
+
+        <MartiFlyIn />
 
         <div className="relative z-20 grid w-full max-w-[96vw] place-items-center px-[2vw]">
           {WORDS.map((word, i) => (
