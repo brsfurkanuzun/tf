@@ -61,7 +61,7 @@ function releaseEdge(edge: Edge | null) {
   activeOnEdge[edge] = Math.max(0, activeOnEdge[edge] - 1)
 }
 
-function pickAlong(edge: Edge, countOnEdge: number, fallback?: number): number {
+function pickAlong(countOnEdge: number, fallback?: number): number {
   if (fallback != null) return fallback
   if (countOnEdge <= 1) return rand(10, 90)
   return rand(0, 1) < 0.5 ? rand(8, 32) : rand(68, 92)
@@ -202,7 +202,7 @@ function startPeekLoop(
   const e = claimEdge(preferredEdge)
   ctrl.edge = e
 
-  const a = pickAlong(e, activeOnEdge[e], along)
+  const a = pickAlong(activeOnEdge[e], along)
   const size = Math.round(rand(82, 108))
   const aspect =
     imgEl.naturalWidth > 0 ? imgEl.naturalHeight / imgEl.naturalWidth : MARTI_ASPECT
@@ -212,7 +212,7 @@ function startPeekLoop(
   const peek = depth * peekFrac
 
   const { anchor, clip, rotation, ax, ay } = getLayout(e, a, vw, vh, size, aspect)
-  const { hidden, mid, shown, retreat } = getMotion(e, size, aspect)
+  const { hidden, shown, retreat } = getMotion(e, size, aspect)
 
   const cx = vw / 2
   const cy = vh / 2
