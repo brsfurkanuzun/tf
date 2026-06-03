@@ -20,6 +20,8 @@ export const ASSETS = {
   scrollKlingHero: '/assets/scroll-kling-hero.mp4',
   /** Video ile birlikte kısık ses (Mor ve Ötesi — Daha Mutlu Olamam) */
   dahaMutluOlamam: '/assets/daha-mutlu-olamam.mp3',
+  /** Arka plan müziği — tüm site boyunca loop */
+  bgMusic: '/assets/sarki.mp3',
   /** Takvim bölümü — şeffaf arka planlı PNG (`public/assets/section-calendar-03.png`) */
   sectionCalendar03: '/assets/section-calendar-03.png',
   /** Anime konser kalabalığı — 2K arka plan */

@@ -15,8 +15,8 @@ const input = path.join(root, 'public', 'assets', 'living-room-hero.png')
 const output = path.join(root, 'public', 'assets', 'living-room-hero-night-export.png')
 
 if (!fs.existsSync(input)) {
-  console.error('Bulunamadı:', input)
-  process.exit(1)
+  console.warn('Atlandı (kaynak yok):', input)
+  process.exit(0)
 }
 
 const meta = await sharp(input).metadata()

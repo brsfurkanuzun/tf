@@ -133,6 +133,7 @@ export const App = function App() {
   const cardakRef = useRef<HTMLImageElement | null>(null)
   const [calendarLeadSpacerPx, setCalendarLeadSpacerPx] = useState(1)
   const [letterSectionMounted, setLetterSectionMounted] = useState(false)
+  const bgMusicStartedRef = useRef(false)
 
   const handleIntroDone = useCallback(() => {
     setHeaderLogoLocked(true)
@@ -181,6 +182,38 @@ export const App = function App() {
     const last = new Image()
     last.src = SALON_GECE_FRAMES[SALON_GECE_FRAME_COUNT - 1]!
   }, [firstScrollDone])
+
+  useEffect(() => {
+    const audio = new Audio(ASSETS.bgMusic)
+    audio.loop = true
+    audio.volume = 0.35
+    audio.preload = 'auto'
+
+    const startBgMusic = () => {
+      if (bgMusicStartedRef.current) return
+      void audio
+        .play()
+        .then(() => {
+          bgMusicStartedRef.current = true
+        })
+        .catch(() => {})
+    }
+
+    window.addEventListener('pointerdown', startBgMusic, { passive: true })
+    window.addEventListener('keydown', startBgMusic, { passive: true })
+    window.addEventListener('wheel', startBgMusic, { passive: true })
+    window.addEventListener('touchstart', startBgMusic, { passive: true })
+
+    return () => {
+      audio.pause()
+      audio.src = ''
+      bgMusicStartedRef.current = false
+      window.removeEventListener('pointerdown', startBgMusic)
+      window.removeEventListener('keydown', startBgMusic)
+      window.removeEventListener('wheel', startBgMusic)
+      window.removeEventListener('touchstart', startBgMusic)
+    }
+  }, [])
 
   useEffect(() => {
     if (firstScrollDone) return
@@ -488,6 +521,7 @@ export const App = function App() {
       >
         İçeriğe geç
       </a>
+
       <div className="pointer-events-none fixed inset-0 z-0" style={{ backgroundColor: REVEAL_BG }} aria-hidden />
 
       <div
