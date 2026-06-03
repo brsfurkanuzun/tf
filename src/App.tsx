@@ -3,6 +3,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import { ASSETS, SALON_GECE_FRAME_COUNT, SALON_GECE_FRAMES } from './config/assets'
 import { LogoCenterFlyIn } from './components/ui/LogoCenterFlyIn'
 import { SiteHeader } from './components/ui/SiteHeader'
+import { WindowWordsSection } from './components/ui/WindowWordsSection'
 
 const VEIL_BG = 'linear-gradient(180deg, #121118 0%, #09090b 48%, #060508 100%)'
 const REVEAL_BG = '#f7f4ef'
@@ -716,6 +717,7 @@ export const App = function App() {
               </section>
               ) : null}
               {letterSectionMounted ? (
+              <>
               <section className="relative z-10 flex min-h-dvh w-full shrink-0 items-center justify-center bg-white px-6 py-24 sm:px-12">
                 <div className="grid w-full max-w-6xl grid-cols-1 items-center gap-12 sm:grid-cols-2 sm:gap-8">
                   {/* Sol — sayı + söz */}
@@ -756,6 +758,8 @@ export const App = function App() {
                   </div>
                 </div>
               </section>
+              <WindowWordsSection />
+              </>
               ) : null}
             </>
           ) : null}

@@ -128,6 +128,28 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Pencere bölümü — harflerin içi manzara fotoğrafı (background-clip: text) */
+.pencere-word-fill {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-repeat: no-repeat;
+}
+
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .pencere-word-fill {
+    -webkit-text-fill-color: #faf9f7;
+    color: #faf9f7;
+  }
+}
+
+.marti-peek-img {
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
 @keyframes bandSlideInLeft {
   from { opacity: 0; transform: translateX(-60%); }
   to   { opacity: 1; transform: translateX(0); }

@@ -34,6 +34,10 @@ export const ASSETS = {
   concert: '/assets/concert.png',
   /** Çardak — 3D render, şeffaf (istatistik bölümü) */
   sectionCardak: '/assets/section-cardak.png',
+  /** Pencere manzarası — martısız, 2K (son bölüm) */
+  pencereMartisiz2k: '/assets/pencere-martisiz-2k.png',
+  /** Martı kafa — uçuş animasyonu */
+  martiHead: '/assets/marti-head.png',
 } as const
 
 const CONCERT_FRAME_PREFIX =
